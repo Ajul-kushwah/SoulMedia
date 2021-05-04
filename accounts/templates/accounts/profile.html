@@ -1,0 +1,329 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% load static %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+    
+	  <!-- profile photo -->
+
+      <div class="col-md-4">
+        
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">
+    
+            <!-- <h2 class="my-5 h2">With shadow</h2> -->
+    
+            <img class="rounded-circle z-depth-2 border border-dark" alt="100x100" 
+                 srec="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
+                 srce="{% static 'img/lion.jpeg' %}"
+                 srcwe="{% static 'img/user-avatar.png' %}"
+                 src="{{ userinfo.profile_photo.url }}"
+                 data-holder-rendered="true"
+                 width="250"
+                 height="250"
+            >
+    
+          </div>
+          <!--Grid column-->
+      </div>
+
+	  <!-- profile text  -->
+
+      <div class="col-md-8">
+
+        <div class="username form-inline">
+          <h2 class="text-dark ">@{{ user.username }} </h2>
+          <a href="{% url 'your_settings' %}" class="btn btn-outline-dark ml-4">Edit</a>
+          <i class="fas fa-cogs ml-4"></i>
+        </div>  
+
+        <div class="profile-statss mt-2">
+          <ul class="form-inline list-unstyled">
+            <li class="mr-3"><b class="profile-stat-count mr-1  text-dark">{{post_count}}</b> posts</li>
+            <li class="mr-3"><b class="profile-stat-count mr-1  text-dark">{{follower_count}}</b> <a href="{% url 'followers'%}" class="text-gray">followers</a></li>
+            <li class="mr-0"><b class="profile-stat-count text-dark">{{followings_count}}</b> <a href="{% url 'followings'%}" class="text-gray">following</a></li>
+          </ul>
+        </div>
+
+        <div class="profile-bio text-dark">
+
+          <!-- <img src="{{ userinfo.profile_photo.url }}" alt="profile photo" width="50"> -->
+          <!-- bio -->
+          {% if userinfo.bio is not None %}
+            {{ userinfo.bio | safe }}
+          {% endif %}
+          <br>
+          <b>{{ user.first_name }} {{ user.last_name }}</b><br>
+          <a href="{{ userinfo.website }}" class="mt-2">{{ userinfo.website }}</a>
+        </div>
+
+      </div>
+    </div>
+  
+
+	<br>
+	<br>
+	<!-- ----------------------------------------------------------------------- -->
+    <div class="profile-tabs">
+      
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Single</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Saved</a>
+        </li>
+      </ul>
+
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="container mt-4">
+            <div class="row">
+              {% if post_count is not 0 %}
+                {% for i in post %}
+                    {% if i.image.url is not None %}
+                        <div class="col-md-4 mt-3"><a href="{% url 'single_post' i.id %}">
+                            <div class="card" style="width: 18rem" >
+                                {% if i.file_extension == 'png' %}
+                                    <img class="card-img-top rounded-0 img-responsive" 
+                                        src="{{i.image.url}}"
+                                        alt="Card image cap"
+                                    >
+                                {% else %}
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <video src="{{ i.image.url }}" controls></video>
+                                    </div>
+                                {% endif %}
+                            </div></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+              {% else %}
+                <div class="text-center">
+                    <h4>You did not post yet</h4>
+                    <a href="{% url 'create_post' %}">do first post</a>
+                </div>
+              {% endif %}
+              <!-- |||||||||||||||||||||||||||||||||| -->
+
+            </div>  
+
+            <br><br>
+
+            <hr>
+            <!-- Gallery -->
+            <div class="row">
+              <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg"
+                  class="w-100 shadow-1-strong rounded mb-4"
+                  alt=""
+                />
+
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg"
+                  class="w-100 shadow-1-strong rounded mb-4"
+                  alt=""
+                />
+              </div>
+
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg"
+                  class="w-100 shadow-1-strong rounded mb-4"
+                  alt=""
+                />
+
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg"
+                  class="w-100 shadow-1-strong rounded mb-4"
+                  alt=""
+                />
+              </div>
+
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                  class="w-100 shadow-1-strong rounded mb-4"
+                  alt=""
+                />
+
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg"
+                  class="w-100 shadow-1-strong rounded mb-4"
+                  alt=""
+                />
+              </div>
+            </div>
+            <!-- Gallery -->
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <p>2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt veritatis rerum voluptatem id cumque sunt, alias qui aliquam consectetur, temporibus reprehenderit pariatur labore nobis dignissimos praesentium? Quae ea deleniti distinctio.</p>
+        </div>
+
+
+        <!-- saved post -->
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="container row gedf-main mt-3">
+            <!-- your post  -->
+                {% if saved_post_count is not 0 %}
+                    {% for i in saved_post %}
+                    {% if i.image.url is not None %}
+                        <div class="col-md-4 mt-3"><a href="{% url 'single_post' i.id %}">
+                            <div class="card" style="width: 18rem" >
+                                {% if i.file_extension == 'png' %}
+                                    <img class="card-img-top rounded-0 img-responsive" 
+                                        src="{{i.image.url}}"
+                                        alt="Card image cap"
+                                    >
+                                {% else %}
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <video src="{{ i.image.url }}" controls></video>
+                                    </div>
+                                {% endif %}
+                            </div></a>
+                        </div>
+                    {% endif %}
+                    
+                    {% endfor %}
+
+                {% else %}
+                    <h3 class="mt-4 text-center">have not saved any post yet </h3>
+                {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container profile-page">
+    <div class="row">
+        <div class="col-xl-6 col-lg-7 col-md-12">
+            <div class="card profile-header">
+                <div class="body">
+                    <div class="row pd-4 justify-content-center align-items-center">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="profile-image float-md-right">
+                              <img class="rounded-circle z-depth-2 border border-dark"
+                               src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
+                               width="100">
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <h4 class="m-t-0 m-b-0"><strong>Michael</strong> Deo</h4>
+                            <span class="job_post">Ui UX Designer</span>
+                            <div>
+                                <button class="btn btn-primary btn-round">Follow</button>
+                                <button class="btn btn-primary btn-round btn-simple">Message</button>
+                            </div>
+                            
+                        </div>                
+                    </div>
+                </div>                    
+            </div>
+        </div>
+        
+        
+        <div class="col-xl-6 col-lg-7 col-md-12">
+            <div class="card profile-header">
+                <div class="body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="profile-image float-md-right"> <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""> </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <h4 class="m-t-0 m-b-0"><strong>Michael</strong> Deo</h4>
+                            <span class="job_post">Ui UX Designer</span>
+                            <p>795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+                            <div>
+                                <button class="btn btn-primary btn-round">Follow</button>
+                                <button class="btn btn-primary btn-round btn-simple">Message</button>
+                            </div>
+                            <p class="social-icon m-t-5 m-b-0">
+                                <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                                <a title="Google-plus" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Behance" href="javascript:void(0);"><i class="fa fa-behance"></i></a>
+                                <a title="Instagram" href="javascript:void(0);"><i class="fa fa-instagram "></i></a>
+                            </p>
+                        </div>                
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-xl-6 col-lg-7 col-md-12">
+            <div class="card profile-header">
+                <div class="body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="profile-image float-md-right"> <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""> </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <h4 class="m-t-0 m-b-0"><strong>Michael</strong> Deo</h4>
+                            <span class="job_post">Ui UX Designer</span>
+                            <p>795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+                            <div>
+                                <button class="btn btn-primary btn-round">Follow</button>
+                                <button class="btn btn-primary btn-round btn-simple">Message</button>
+                            </div>
+                            <p class="social-icon m-t-5 m-b-0">
+                                <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                                <a title="Google-plus" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Behance" href="javascript:void(0);"><i class="fa fa-behance"></i></a>
+                                <a title="Instagram" href="javascript:void(0);"><i class="fa fa-instagram "></i></a>
+                            </p>
+                        </div>                
+                    </div>
+                </div>                    
+            </div>
+        </div>
+        
+        
+        <div class="col-xl-6 col-lg-7 col-md-12">
+            <div class="card profile-header">
+                <div class="body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="profile-image float-md-right"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""> </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <h4 class="m-t-0 m-b-0"><strong>Michael</strong> Deo</h4>
+                            <span class="job_post">Ui UX Designer</span>
+                            <p>795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+                            <div>
+                                <button class="btn btn-primary btn-round">Follow</button>
+                                <button class="btn btn-primary btn-round btn-simple">Message</button>
+                            </div>
+                            <p class="social-icon m-t-5 m-b-0">
+                                <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                                <a title="Google-plus" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Behance" href="javascript:void(0);"><i class="fa fa-behance"></i></a>
+                                <a title="Instagram" href="javascript:void(0);"><i class="fa fa-instagram "></i></a>
+                            </p>
+                        </div>                
+                    </div>
+                </div>                    
+            </div>
+        </div>
+	</div>
+</div> -->
+
+{%endblock content%}

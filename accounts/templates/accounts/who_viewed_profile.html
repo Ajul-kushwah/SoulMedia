@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+
+{%block content%}
+{% load custom_filter %}
+{% load static %}
+
+
+  <!-- Content Row -->
+
+  <nav class="navbar navbar-light bg-white">
+    <a href="#" class="navbar-brand">Bootsbook</a>
+    <form class="form-inline">
+        <div class="input-group">
+            <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</nav>
+
+
+<div class="container-fluid gedf-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="h5">@{{ user.username }}</div>
+                    <div class="h7 text-muted">Fullname : {{ user.first_name }} {{ user.last_name }}</div>
+                    <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
+                        etc.
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">
+                            <a href="{% url 'followers' %}">
+                            Followers
+                            </a>
+                        </div>
+                        <div class="h5">{{follower_count}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">
+                            <a href="{% url 'followings' %}">
+                            Following
+                            </a>
+                        </div>
+                        <div class="h5">{{followings_count}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'your_post' %}">
+                            Your Post
+                        </a>
+                        <div class="h5">{{post_count}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 gedf-main">
+
+            
+            <!-- your post  -->
+            {% if user_count is not 0 %}
+                {% for u in profile %}
+                    <div class="card mt-2 gedff-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- username and full name -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="mr-2">
+                                        <!-- <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""> -->
+                                        <img class="rounded-circle" width="45" src="{{u.another_user | add_profile_image }}" alt="">
+                                    </div>
+                                    <div class="ml-2">
+                                        <div class="h5 m-0 text-dark"><a href="" class="btn-link">@{{ u.another_user }}</a></div>
+                                        <div class="h7 text-muted">
+                                            {{u.another_user.first_name}}  {{u.another_user.last_name}}
+                                            <i class="ml-4 fas fa-clock"></i> {{u.created_at}}
+                                            <b class="ml-2">{{u.count}} Times</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- follow btn -->
+                                <div>
+                                    <a href="" id="follow" class="btn btn-primary">View</a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                <h3 class="mt-2 text-center">None</h3>
+            {% endif %}
+            <!-- ppppppppppppppppppppppppppppppppppp -->
+
+        </div>
+        <div class="col-md-3">
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+            <div class="card gedf-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>  
+{%endblock content%}

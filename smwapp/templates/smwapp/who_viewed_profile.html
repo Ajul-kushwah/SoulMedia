@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load custom_filter %}
+
+{%block content%}
+{% load static %}
+
+
+  <!-- Content Row -->
+
+
+<div class="container-fluid gedf-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="h5">@{{ user.username }}</div>
+                    <div class="h7 text-muted">Fullname : {{ user.first_name }} {{ user.last_name }}</div>
+                    <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
+                        etc.
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-6 gedf-main">
+
+            <h4>Who view Your Profile:</h4>
+            
+            <!-- your post  -->
+            {% if user_count is not 0 %}
+                {% for u in profile %}
+                    <div class="card mt-2 gedff-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- username and full name -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="mr-2">
+                                        <!-- <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""> -->
+                                        <img class="rounded-circle" width="45" height="45" src="{{u.another_user | add_profile_image }}" alt="">
+                                    </div>
+                                    <div class="ml-2">
+                                        <div class="h5 m-0 text-dark"><a href="{% url 'other_user_profile' u.another_user %}" class="btn-link">@{{ u.another_user }}</a></div>
+                                        <div class="h7 text-muted">
+                                            {{u.another_user.first_name}}  {{u.another_user.last_name}}
+                                            <i class="ml-4 fas fa-clock"></i> {{u.created_at}}
+                                            <b class="ml-2">{{u.count}} Times</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- follow btn -->
+                                <div>
+                                    <a href="{% url 'other_user_profile' u.another_user %}" id="follow" class="btn btn-primary">View</a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                <h3 class="mt-2 text-center">None</h3>
+            {% endif %}
+            <!-- ppppppppppppppppppppppppppppppppppp -->
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Share at</h5> -->
+                    
+                    <a class="btn btn-light w-100 mt-1" href="" styles="color: aliceblue;">
+                        <i class="fas fa-clock"></i> Last Login at <br>
+                        <b>{{user.last_login}}</b>
+                    </a>
+                    <a class="btn btn-light w-100 mt-1" href="" styles="color: aliceblue;">
+                        <i class="fas fa-clock"></i> Join Date at<br>
+                        <b>{{ user.date_joined}}</b>
+                    </a>
+                    
+                    <!-- <a class="btn btn-light w-100 mt-1" href="{% url 'logout'%}" styles="color: aliceblue;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a> -->
+
+                </div>
+            </div>    
+            <!-- second -->
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <h5 class="card-title">Share at:</h5>
+                    
+                    <!-- facebook -->
+                    <a class="btn btn-primary" style="background-color: #3b5998;" href="https://www.facebook.com/sharer.php?u=http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <!-- Whatsapp -->
+                    <a class="btn btn-primary" onclick="toWhatsapp()" style="background-color: #25d366;" href="https://api.whatsapp.com/send?text=http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <!-- instagram -->
+                    <a class="btn btn-primary" style="background-color: #ac2bac;" href="https://twitter.com/share?url=[http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="btn btn-primary" style="background-color: #55acee;" href="https://twitter.com/share?url=[http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- Mail link -->
+                    <a class="btn btn-primary" style="background-color: #dd4b39;;" href="mailto:?subject=Soul Media Post&body=Check out this site: http://localhost:8000/" title="Share by Email" role="button">
+                        <i class="fas fa-envelope-square"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>  
+{%endblock content%}

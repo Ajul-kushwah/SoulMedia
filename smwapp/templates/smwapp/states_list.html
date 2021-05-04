@@ -1,0 +1,9 @@
+<option value="">----Select state---</option>
+{% for s in states %}
+    <option value="{{ s.pk }}">{{ s.name }}</option>
+{% endfor %}
+
+<!--<option value="">&#45;&#45;&#45;&#45;Select state-&#45;&#45;</option>-->
+<!--{% for s in states %}-->
+<!--    <option value="{{ s.name }}"></option>-->
+<!--{% endfor %}-->

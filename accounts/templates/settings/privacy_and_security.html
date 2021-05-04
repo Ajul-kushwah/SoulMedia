@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+<!-- Content Row -->
+  <div class="row">
+    <div class="col-md-3 ">
+        <div class="list-group ">
+            <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Basic Info</a>
+            <a href="{% url 'other_details' %}" class="list-group-item list-group-item-action">Other details</a>
+            <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+            <!-- <a href="{% url 'push_notifications' %}" class="list-group-item list-group-item-action">Push Notifications</a> -->
+            <a href="{% url 'privacy_and_security' %}" class="list-group-item list-group-item-action active">Privacy and Security</a>
+            <!-- <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Post</a>
+            <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Settings</a> -->
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h4>Change Password</h4>
+                        <hr>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            
+                          <h4 class="mb-3">Account Privacy</h4>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="same-address">
+                            <label class="custom-control-label" for="same-address"><b>Private Account</b></label>
+                          </div>
+                          <p class="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione accusamus necessitatibus nesciunt unde consectetur esse molestiae, minus ipsum aperiam illo sed et! Nulla rerum autem, necessitatibus voluptatibus rem voluptatum aliquid.</p>
+
+                          <hr class="mb-4">
+
+                          <h4 class="mb-3">Account Status</h4>
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="save-info">
+                            <label class="custom-control-label" for="save-info"><b>Show activity status</b></label>
+                          </div>
+                          <p class="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione accusamus necessitatibus nesciunt unde consectetur esse molestiae, minus ipsum aperiam illo sed et! Nulla rerum autem, necessitatibus voluptatibus rem voluptatum aliquid.</p>
+
+
+                          <!-- <hr class="mb-4">
+
+                          <h4 class="mb-3">Payment</h4>
+                          <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                              <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                              <label class="custom-control-label" for="credit">Credit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                              <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                              <label class="custom-control-label" for="debit">Debit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                              <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                              <label class="custom-control-label" for="paypal">PayPal</label>
+                            </div>
+                          </div> -->
+
+                          <hr class="mb-3">
+                          <h4 class="mb-3">Delete Account:</h4>
+                          <div>
+                            <p>If you want to delete account? please click on delete button</p>
+                            <a href="" class="btn btn-danger">Delete</a>
+                          </div>
+
+                          
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content row -->
+
+{%endblock content%}

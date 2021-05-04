@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load custom_filter %}
+
+
+{%block content%}
+{% load static %}
+
+
+  <!-- Content Row -->
+
+  <!-- <nav class="navbar navbar-light bg-white">
+    <a href="#" class="navbar-brand">Bootsbook</a>
+    <form class="form-inline">
+        <div class="input-group">
+            <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</nav> -->
+
+
+<div class="container-fluid gedf-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="h5">@{{ user.username }}</div>
+                    <div class="h7 text-muted">Fullname : {{ user.first_name }} {{ user.last_name }}</div>
+                    <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
+                        etc.
+                    </div>
+                </div>
+                <!-- <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">
+                            <a href="{% url 'followers' %}">
+                            Followers
+                            </a>
+                        </div>
+                        <div class="h5">{{follower_count}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">
+                            <a href="{% url 'followings' %}">
+                            Following
+                            </a>
+                        </div>
+                        <div class="h5">{{followings_count}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'your_post' %}">
+                            Your Post
+                        </a>
+                        <div class="h5">{{post_count}}</div>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+        <div class="col-md-6 gedf-main">
+
+            
+            <!-- your post  -->
+            {% if user_count is not 0 %}
+                {% for u in users %}
+                    <div class="card mt-2 gedff-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- username and full name -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="mr-2">
+                                        <!-- <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""> -->
+                                        <img class="rounded-circle" width="45" src="{{u.id |add_profile_image}}" alt="">
+                                    </div>
+                                    <div class="ml-2">
+                                        <div class="h5 m-0 text-dark"><a href="{% url 'other_user_profile' u.username %}" class="btn-link">@{{ u.username }}</a></div>
+                                        <div class="h7 text-muted">{{u.first_name}}  {{u.last_name}}</div>
+                                    </div>
+                                </div>
+                                <!-- view btn -->
+                                <div>
+                                    <a href="{% url 'other_user_profile' u.username %}" class="btn btn-primary">View</a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                <h3 class="mt-2 text-center">None</h3>
+            {% endif %}
+            <!-- ppppppppppppppppppppppppppppppppppp -->
+
+        </div>
+        <div class="col-md-3">
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Share at</h5> -->
+                    
+                    <a class="btn btn-light w-100 mt-1" href="{% url 'profile'%}" styles="color: aliceblue;">
+                        <i class="fas fa-user"></i> Profile
+                    </a>
+                    <a class="btn btn-light w-100 mt-1" href="{% url 'your_settings'%}" styles="color: aliceblue;">
+                        <i class="fas fa-cogs"></i> Settings
+                    </a>
+                    <a class="btn btn-light w-100 mt-1" href="{% url 'all_saved_post'%}" styles="color: aliceblue;">
+                        <i class="fas fa-bookmark"></i> Saved
+                    </a>
+
+                    <a class="btn btn-light w-100 mt-1" href="{% url 'liked_post'%}" styles="color: aliceblue;">
+                        <i class="fas fa-heart"></i> Liked
+                    </a>
+                    <a class="btn btn-light w-100 mt-1" href="{% url 'logout'%}" styles="color: aliceblue;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+
+                </div>
+            </div>    
+            <!-- second -->
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <h5 class="card-title">Share at:</h5>
+                    
+                    <!-- facebook -->
+                    <a class="btn btn-primary" style="background-color: #3b5998;" href="https://www.facebook.com/sharer.php?u=http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <!-- Whatsapp -->
+                    <a class="btn btn-primary" onclick="toWhatsapp()" style="background-color: #25d366;" href="https://api.whatsapp.com/send?text=http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <!-- instagram -->
+                    <a class="btn btn-primary" style="background-color: #ac2bac;" href="https://twitter.com/share?url=[http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="btn btn-primary" style="background-color: #55acee;" href="https://twitter.com/share?url=[http://localhost:8000/" target="_blank" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- Mail link -->
+                    <a class="btn btn-primary" style="background-color: #dd4b39;;" href="mailto:?subject=Soul Media Post&body=Check out this site: http://localhost:8000/" title="Share by Email" role="button">
+                        <i class="fas fa-envelope-square"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>  
+{%endblock content%}

@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% load static %}
+
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-md-3 ">
+      <div class="list-group ">
+        <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action active">Basic Info</a>
+        <a href="{% url 'other_details' %}" class="list-group-item list-group-item-action">Other details</a>
+        <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+        <!-- <a href="{% url 'push_notifications' %}" class="list-group-item list-group-item-action">Push Notifications</a> -->
+        <a href="{% url 'privacy_and_security' %}" class="list-group-item list-group-item-action">Privacy and Security</a>
+        <!-- <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Post</a>
+        <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Settings</a> -->
+      </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Your Profile</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% include 'alert_.html' %}
+                        <form method="POST" action="{% url 'change_profile' %}" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <div class="form-group row">
+                            <label for="fileupload" class="col-4 col-form-label">Profile Image</label> 
+                            <div class="col-8">
+                                <div class="form-inline">
+                                  <img class="rounded-circle z-depth-2 border border-dark" alt="100x100"
+                                  src="{{user_info.profile_photo.url}}"
+                                  data-holder-rendered="true"
+                                  width="100"
+                                  height="100"
+                                  id="upload-img"
+                                  >
+                                  <input id="fileupload" name="profile-img" accept="image/*" type="file" required>
+                                  <input type="submit" value="Change Profile Image" class="btn btn-primary">
+                                </div>
+                              </div>
+                          </div>
+  
+                        </form>
+
+
+                        <!-- username -->
+                        <form method="POST" action="{% url 'change_username'%}">
+                          {% csrf_token %}
+                          <div class="form-group row">
+                            <label for="username" class="col-4 col-form-label">User Name*</label> 
+                            <div class="col-8">
+                              <input id="username" name="username" value="{{user.username}}" placeholder="Username" class="form-control here" required="required" type="text">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="offset-4 col-8">
+                              <button name="submit" type="submit" class="btn btn-primary">Change Username</button>
+                            </div>
+                          </div>
+
+                        </form>
+
+                        <!-- email  -->
+                        <form method="POST" action="{% url 'change_email'%}">
+                          {% csrf_token %}
+
+                          <div class="form-group row">
+                            <label for="email" class="col-4 col-form-label">Email*</label> 
+                            <div class="col-8">
+                              <input id="email" name="email" value="{{ user.email }}" placeholder="Email" class="form-control here" required="required" type="email">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <div class="offset-4 col-8">
+                              <button name="submit" type="submit" class="btn btn-primary">Change Email</button>
+                            </div>
+                          </div>
+
+                        </form>
+
+                        <!-- first/last name -->
+                        <form method="POST" action="{% url 'edit_account' %}">  
+                          {% csrf_token %}
+                          <div class="form-group row">
+                            <label for="name" class="col-4 col-form-label">First Name</label> 
+                            <div class="col-8">
+                              <input id="name" name="firstname" value="{{ user.first_name }}" placeholder="First Name" class="form-control" type="text">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="lastname" class="col-4 col-form-label">Last Name</label> 
+                            <div class="col-8">
+                              <input id="lastname" name="lastname" value="{{ user.last_name }}" placeholder="Last Name" class="form-control" type="text">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <label for="website" class="col-4 col-form-label">Website</label> 
+                            <div class="col-8">
+                              <input id="website" name="website" value="{{user_info.website}}" placeholder="website" class="form-control here" type="url">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <div class="offset-4 col-8">
+                              <input value="Update My Profile" type="submit" class="btn btn-primary">
+                            </div>
+                          </div>
+                        </form>
+
+                        <!-- for bio -->
+                        <form method="POST" action="{% url 'add_bio' %}"  enctype="multipart/form-data">  
+                          {% csrf_token %}
+                          
+                          <div class="form-group row">
+                            <label for="publicinfo" class="col-4 col-form-label">Bio</label> 
+                            <div class="col-8">
+                              {{form.media}}
+                              {{form.as_p}}
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <div class="offset-4 col-8">
+                              <button name="submit" type="submit" class="btn btn-primary">Add Bio</button>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content row -->
+
+{%endblock content%}

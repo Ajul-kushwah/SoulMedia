@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-md-3 ">
+      <div class="list-group ">
+        <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Basic Info</a>
+        <a href="{% url 'other_details' %}" class="list-group-item list-group-item-action">Other details</a>
+        <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+        <a href="{% url 'push_notifications' %}" class="list-group-item list-group-item-action active">Push Notifications</a>
+        <a href="{% url 'privacy_and_security' %}" class="list-group-item list-group-item-action">Privacy and Security</a>
+        <!-- <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Post</a>
+        <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Settings</a> -->
+      </div> 
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h4>Change Password</h4>
+                        <hr>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <form>
+                            <h4 class="mb-3">Likes</h4>
+                            <div class="d-block my-3">
+                              <div class="custom-control custom-radio">
+                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                                <label class="custom-control-label" for="credit">off</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                <label class="custom-control-label" for="debit">from people I follow</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                <label class="custom-control-label" for="paypal">from everyone</label>
+                              </div>
+                            </div>
+  
+                            <hr class="mb-4">
+
+                            <h4 class="mb-3">Comments</h4>
+                            <div class="d-block my-3">
+                              <div class="custom-control custom-radio">
+                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                                <label class="custom-control-label" for="credit">off</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                <label class="custom-control-label" for="debit">from people I follow</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                <label class="custom-control-label" for="paypal">from everyone</label>
+                              </div>
+                            </div>
+                            
+                            <hr class="mb-4">
+
+                            <h4 class="mb-3">Accepted Follow Request</h4>
+                            <div class="d-block my-3">
+                              <div class="custom-control custom-radio">
+                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                                <label class="custom-control-label" for="credit">off</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                                <label class="custom-control-label" for="paypal">from everyone</label>
+                              </div>
+                            </div>
+  
+                          <hr class="mb-4">
+
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="same-address">
+                            <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                          </div>
+
+
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="save-info">
+                            <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                          </div>
+
+
+                          <hr class="mb-4">
+
+                          <h4 class="mb-3">Payment</h4>
+                          <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                              <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                              <label class="custom-control-label" for="credit">Credit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                              <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                              <label class="custom-control-label" for="debit">Debit card</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                              <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                              <label class="custom-control-label" for="paypal">PayPal</label>
+                            </div>
+                          </div>
+
+                          <hr class="mb-4">
+
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content row -->
+
+{%endblock content%}

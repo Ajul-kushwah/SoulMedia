@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-md-3 ">
+         <div class="list-group ">
+            <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Basic Info</a>
+            <a href="{% url 'other_details' %}" class="list-group-item list-group-item-action active">Other details</a>
+            <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+            <!-- <a href="{% url 'push_notifications' %}" class="list-group-item list-group-item-action">Push Notifications</a> -->
+            <a href="{% url 'privacy_and_security' %}" class="list-group-item list-group-item-action">Privacy and Security</a>
+            <!-- <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Post</a>
+            <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Settings</a> -->
+        </div> 
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Other Details</h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% include 'alert_.html' %}
+                        <form method="POST" action="{% url 'edit_other_detail' %}" id="indexForm" states_url="{% url 'states_load' %}" city_url="{% url 'city_load' %}">
+                          {% csrf_token %}
+                          <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">Nick Name*</label> 
+                            <div class="col-8">
+                              <input id="text" name="nickname" value="{{userinfo.nickname}}" placeholder="Nick Name" class="form-control here" required="required" type="text">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="select" class="col-4 col-form-label">Gender <b>  {{userinfo.gender}}</b></label>
+                            <div class="col-8">
+                              <select id="select" name="gender" class="custom-select">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <label for="phone" class="col-4 col-form-label">Phone Number</label> 
+                            <div class="col-8">
+                              <input type="tel" id="phone" name="phone" value="{{userinfo.phone}}" placeholder="Phone No. :" patternn="[0-9]{3}-[0-9]{4}-[0-9]{3}" class="form-control here" required>
+                              <!-- <small>Format: 123-4567-890</small> -->
+                            </div>
+                          </div>
+                          
+                          <div class="row">
+                            <div class="col-md-5 mb-3">
+                              <label for="country">Country : <b>  {{userinfo.country.name}}</b></label>
+                              <select name="country" class="custom-select d-block w-100" id="country" required="">
+                                <option value="">----select country----</option>
+                                {% for i in country %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                                {% endfor %}
+                              </select>
+                              <div class="invalid-feedback">
+                                Please select a valid country.
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <label for="state">State : <b>  {{userinfo.state.name}}</b></label>
+                              <select name="state" class="custom-select d-block w-100" id="state" required="">
+                                <option value="">Choose...</option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Please provide a valid state.
+                              </div>
+                              <!-- <input type="text" list="state" name="state" id="states" placeholder="States." class="form-control" required="required">
+                              
+                              <datalist id="state">
+  
+                              </datalist> -->
+                            </div>
+                            <div class="col-md-3 mb-3">
+                              <label for="citylist">City : <b>  {{userinfo.city.name}}</b></label>
+                              <!--<input type="text" class="form-control" id="zip" placeholder="" required="">
+                              <div class="invalid-feedback">
+                                Zip code required.
+                              </div> -->
+
+                              <select name="city" class="custom-select d-block w-100" id="citylist" required="">
+                                <option value="">Choose...</option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Please provide a valid state.
+                              </div>
+
+                              <!-- <label for="city">City</label>
+                              <input type="text" list="citylist" name="" id="city" placeholder="City." class="form-control" required="required">
+                              
+                              <datalist id="citylist">
+  
+                              </datalist> -->
+                            </div>
+                          </div>
+                          
+                          <!-- button -->
+                          <div class="form-group row">
+                            <div class="offset-4 col-8">
+                              <button name="submit" type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content row -->
+
+{%endblock content%}
