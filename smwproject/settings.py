@@ -26,7 +26,7 @@ SECRET_KEY = '@da+pjwxo43a2q^9^auo7@fm_+0^^mpf@zqdlniapf21%rcol3'
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://soulmedia.herokuapp.com/','*']
 
 
 # Application definition
