@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from accounts.models import ProfileView, UserInfo, Country, State, City, WhoProfileView
+from accounts.models import UserInfo, Country, State, City, WhoProfileView
 from accounts.forms import AddBioForm
 
 from django.db.models import Q

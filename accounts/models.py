@@ -44,20 +44,6 @@ class UserInfo(models.Model):
     def __str__(self):
         return self.user.username
 
-
-class ProfileView(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    another_user = models.ManyToManyField(User, related_name="another_user",blank=True,null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    @classmethod
-    def view(cls, user, another_account):
-        obj, create = cls.objects.get_or_create(user=another_account)
-        obj.another_user.add(user)
-
-    def __str__(self):
-        return str(self.user)
-
 class WhoProfileView(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     another_user = models.ForeignKey(User,related_name="viewer",on_delete=models.CASCADE)
