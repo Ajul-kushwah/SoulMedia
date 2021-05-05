@@ -16,4 +16,4 @@ application = Cling(get_wsgi_application())
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'smwproject.settings')
 
-application = Cling(get_wsgi_application())
+# application = Cling(get_wsgi_application())
