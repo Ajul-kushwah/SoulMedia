@@ -1,6 +1,6 @@
 import datetime
 
-from django.shortcuts import render,redirect,HttpResponseRedirect
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -14,14 +14,11 @@ from post.models import *
 
 from django.core.mail import send_mail
 from django.conf import settings
-from django.urls import reverse
 # Create your views here.
 
 
 @login_required
 def index(request):
-    # userinfo = UserInfo.objects.get(user=request.user)
-
     post = Post.objects.all().order_by('-id')
     following_obj = Following.objects.get(user=request.user)
     followers_count, followings_count = following_obj.follower.count(), following_obj.followed.count()
@@ -269,14 +266,15 @@ def other_user_profile(request,username):
         who.save()
 
 
-    context = {'user_d':user_d,'userinfo':userinfo,'post': post,
-                   'post_count':post_count,
-                   'followers': followers,
-                   'followings': followeds,
-                   'follower_count': followers_count,
-                   'followings_count': followings_count,
-                   'is_following':is_following
-                   }
+    context = {'user_d' : user_d, 'userinfo' : userinfo,
+               'post': post,
+               'post_count' : post_count,
+               'followers' : followers,
+               'followings' : followeds,
+               'follower_count' : followers_count,
+               'followings_count' : followings_count,
+               'is_following' : is_following
+                }
 
     return render(request,'accounts/other_user_profile.html',context)
 
@@ -323,8 +321,8 @@ def edit_account(request):
         lastname = request.POST['lastname']
         website = request.POST['website']
         user_info = UserInfo.objects.get(user=request.user)
-        request.user.first_name =  firstname #'Anil'
-        request.user.last_name=  lastname #'Kushwah'
+        request.user.first_name = firstname
+        request.user.last_name = lastname
         request.user.save()
         print('user updated ')
         if user_info is not None:

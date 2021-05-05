@@ -112,4 +112,4 @@ def insta_profile(request):
 
 
 def error_404_view(request, exception):
-    return render(request,'smwapp/error_404.html',status=404)
+    return render(request, 'smwapp/error_404.html', status=404)
