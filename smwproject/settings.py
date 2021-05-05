@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@da+pjwxo43a2q^9^auo7@fm_+0^^mpf@zqdlniapf21%rcol3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['soulmedia.herokuapp.com','localhost']#'https://soulmedia.herokuapp.com/'
 
