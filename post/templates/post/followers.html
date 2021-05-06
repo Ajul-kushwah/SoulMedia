@@ -25,7 +25,7 @@
 
 <div class="container-fluid gedf-wrapper">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 d-none d-sm-none d-md-block">
             <div class="card">
                 <div class="card-body">
                     <div class="h5">@{{ user.username }}</div>
@@ -91,24 +91,20 @@
                 </div>
                 {% endfor %}
             {% else %}
-                <h3 class="mt-2">you hava not any follower yet </h3>
+                <h3 class="text-center mt-2">you have not any follower yet </h3>
             {% endif %}
 
             <hr>
         
-                 
-            <!-- </div> -->
-
 
         </div>
         
 
 
-
-        <div class="col-md-3">
+        <!-- right side card -->
+        <div class="col-md-3 d-none d-sm-none d-md-block">
             <div class="card gedf-card">
                 <div class="card-body">
-                    <!-- <h5 class="card-title">Share at</h5> -->
                     
                     <a class="btn btn-light w-100 mt-1" href="{% url 'profile'%}" styles="color: aliceblue;">
                         <i class="fas fa-user"></i> Profile

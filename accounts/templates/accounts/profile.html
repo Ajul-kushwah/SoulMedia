@@ -43,7 +43,7 @@
 
         <div class="profile-statss mt-2">
           <ul class="form-inline list-unstyled">
-            <li class="mr-3"><b class="profile-stat-count mr-1  text-dark">{{post_count}}</b> posts</li>
+            <li class="mr-3"><b class="profile-stat-count mr-1  text-dark">{{post_count}}</b> <a href="{% url 'your_post'%}" class="text-gray">posts</a></li>
             <li class="mr-3"><b class="profile-stat-count mr-1  text-dark">{{follower_count}}</b> <a href="{% url 'followers'%}" class="text-gray">followers</a></li>
             <li class="mr-0"><b class="profile-stat-count text-dark">{{followings_count}}</b> <a href="{% url 'followings'%}" class="text-gray">following</a></li>
           </ul>
@@ -51,7 +51,6 @@
 
         <div class="profile-bio text-dark">
 
-          <!-- <img src="{{ userinfo.profile_photo.url }}" alt="profile photo" width="50"> -->
           <!-- bio -->
           {% if userinfo.bio is not None %}
             {{ userinfo.bio | safe }}

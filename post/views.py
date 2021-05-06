@@ -6,6 +6,10 @@ from .models import Post, Following, Like
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 import json
 
+def createPostView(request):
+    return render(request, 'post/create_post.html')
+
+
 
 def create_post(request):
     if request.method == 'POST':

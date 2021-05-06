@@ -5,13 +5,13 @@
 {% load static %}
 
 
-  <!-- Content Row -->
+<!-- Content Row -->
 
 
 
 <div class="container-fluid gedf-wrapper">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 d-sm-none d-md-block">
             <div class="card">
                 <div class="card-body">
                     <div class="h5">@{{ user.username }}</div>
@@ -180,14 +180,14 @@
                 {% endfor %}
 
             {% else %}
-                <h3 class="mt-2 text-center">you hava not any post yet </h3>
+                <h3 class="mt-2 text-center mt-3">you have not save any post yet.</h3>
             {% endif %}
         </div>
 
 
 
         <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-        <div class="col-md-3">
+        <div class="col-md-3 d-sm-none d-md-block">
             <div class="card gedf-card">
                 <div class="card-body">
                     <!-- <h5 class="card-title">Share at</h5> -->

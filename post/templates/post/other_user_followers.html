@@ -25,7 +25,7 @@
 
 <div class="container-fluid gedf-wrapper">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 d-none d-sm-none d-md-block">
             <div class="card">
                 <div class="card-body">
                     <div class="h5">@{{ user_d }}</div>
@@ -99,11 +99,10 @@
         
 
 
-
-        <div class="col-md-3">
+        <!-- right side card -->
+        <div class="col-md-3 d-none d-sm-none d-md-block">
             <div class="card gedf-card">
                 <div class="card-body">
-                    <!-- <h5 class="card-title">Share at</h5> -->
                     
                     <a class="btn btn-light w-100 mt-1" href="{% url 'profile'%}" styles="color: aliceblue;">
                         <i class="fas fa-user"></i> Profile

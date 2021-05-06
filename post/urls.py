@@ -7,6 +7,7 @@ urlpatterns = [
     path('followers', followers, name='followers'),
     path('followings', followings, name='followings'),
     path('create_post', create_post, name='create_post'),
+    path('create_post_in_mobile', createPostView, name='create_post_in_mobile'),
     path('delete_post/<int:id>', delete_post, name='delete_post'),
     path('edit_post/<int:id>', edit_post, name='edit_post'),
     path('follow/<str:username>', follow, name='follow'),

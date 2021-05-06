@@ -4,7 +4,7 @@
 
   <!-- Content Row -->
   <div class="row">
-    <div class="col-md-3 ">
+    <div class="col-md-3 d-sm-none d-md-block">
       <div class="list-group ">
         <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Basic Info</a>
         <a href="{% url 'other_details' %}" class="list-group-item list-group-item-action">Other details</a>
@@ -15,7 +15,34 @@
         <a href="{% url 'your_settings' %}" class="list-group-item list-group-item-action">Settings</a> -->
       </div> 
     </div>
-    <div class="col-md-9">
+
+
+    
+    <div class="col-md-3 d-md-none">
+
+      <div class="list-group align-items-center justify-content-center list-group-horizontal">
+        <a class="list-group-item" href="{% url 'your_settings' %}" styles="color: aliceblue;">
+          <i class="fas fa-user"></i>
+        </a>
+        <a class="list-group-item" href="{% url 'other_details' %}" styles="color: aliceblue;">
+          <i class="fas fa-user-cog"></i>
+        </a>
+        <a class="list-group-item " href="{% url 'change_password' %}" styles="color: aliceblue;">
+          <i class="fas fa-money-check-alt"></i>
+        </a>
+        <a class="list-group-item" href="{% url 'privacy_and_security' %}" styles="color: aliceblue;">
+          <i class="fas fa-user-shield"></i>
+        </a>
+        <a class="list-group-item active" href="{% url 'push_notifications' %}" styles="color: aliceblue;">
+          <i class="fas fa-bell"></i>
+        </a>
+      </div>
+              
+    </div>  
+
+
+
+    <div class="col-md-9 mt-3">
         <div class="card">
             <div class="card-body">
                 <!-- <div class="row">
