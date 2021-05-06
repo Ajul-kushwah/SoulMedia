@@ -10,35 +10,25 @@
     
 	  <!-- profile photo -->
 
-      <div class="col-md-4">
+      <div class="col-sm-4 col-md-4 profile-img text-center">
         
-          <!--Grid column-->
-          <div class="col-md-6 mb-4">
+        <img class="rounded-circle z-depth-2 border border-dark" alt="100x100" 
+              src="{{ userinfo.profile_photo.url }}"
+              data-holder-rendered="true"
+              width="250"
+              height="250"
+        >
     
-            <!-- <h2 class="my-5 h2">With shadow</h2> -->
-    
-            <img class="rounded-circle z-depth-2 border border-dark" alt="100x100" 
-                 srec="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-                 srce="{% static 'img/lion.jpeg' %}"
-                 srcwe="{% static 'img/user-avatar.png' %}"
-                 src="{{ userinfo.profile_photo.url }}"
-                 data-holder-rendered="true"
-                 width="250"
-                 height="250"
-            >
-    
-          </div>
-          <!--Grid column-->
       </div>
 
 	  <!-- profile text  -->
 
-      <div class="col-md-8">
+      <div class=" col-sm-8 col-md-8">
 
         <div class="username form-inline">
           <h2 class="text-dark ">@{{ user.username }} </h2>
           <a href="{% url 'your_settings' %}" class="btn btn-outline-dark ml-4">Edit</a>
-          <i class="fas fa-cogs ml-4"></i>
+          <i class="fas fa-cogs ml-4 "></i>
         </div>  
 
         <div class="profile-statss mt-2">

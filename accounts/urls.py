@@ -41,5 +41,7 @@ urlpatterns = [
     #delete user account
     path('delete_account', views.delete_account, name='delete_account'),
 
+    path('test', views.test, name='test'),
+
 ]
 

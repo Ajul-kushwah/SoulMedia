@@ -422,6 +422,10 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 
+def test(request):
+    return render(request,'other/test.html')
+
+
 @login_required()
 def delete_account(request):
     u = User.objects.get(username = request.user.username)

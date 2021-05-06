@@ -24,8 +24,12 @@
   <link href="{% static 'css/cardprofile.css' %}" rel="stylesheet">
   <link href="{% static 'css/a.css' %}" rel="stylesheet">
   <link href="{% static 'css/post.css' %}" rel="stylesheet">
+  <link href="{% static 'css/profile-test.css' %}" rel="stylesheet">
   <link href="{% static 'css/userIndex3.css' %}" rel="stylesheet">
   
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
   <style>
     .nav-bottom li a{
             display: block;
@@ -40,7 +44,7 @@
             height: 60px;
             /* bottom:0;
             position: fixed; */
-            background-color: #f0f0f0;
+            background-color: #ffffff;
         }
         .nav-bottom ul{
             list-style-type: none;
@@ -62,7 +66,15 @@
             margin-right:auto;
             margin-left:auto
           }
+
+          
+          .profile-img img{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+          }
         }
+        
   </style>
   
 </head>
@@ -85,11 +97,22 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> <!--d-none d-sm-none d-md-block-->
           
-          <!-- Sidebar Toggle (Topbar) -->
-          <button class="btn btn-link d-md-none rounded-circle mr-3 rotate-n-15">
-            <i class="fas fa-laugh-wink" style="font-size: 30px;"></i>
-          </button>
+          <!-- Sidebar Toggle (Topbar) rounded-circle-->
+          <!-- <button class="btn btn-link text-primary d-md-none mr-3 ">
+            <i class="fas fa-laugh-wink rotate-n-15" style="font-size: 30px; vertical-align: middle;"></i>
+            Soul Media
+          </button> -->
 
+          
+          <!-- <a type="button" class="btn-floating btn-lg blue-gradient">
+            <i class="fab fa-google-wallet" aria-hidden="true"></i>
+            Soul Media
+          </a> -->
+          <a href="/" type="button" class="btn-floating btn-lg text-primary d-md-none" style="text-decoration: none; font-family: 'Itim', cursive; font-weight: bold;">
+            <i class="fas fa-laugh-wink rotate-n-15" style="font-size: 25px;" aria-hidden="true"></i>
+            SoulMedia
+          </a>
+    
           <ul class="navbar-nav d-none d-sm-none d-md-block">
             <!-- logo -->
             <li class="nav-item">
@@ -287,7 +310,7 @@
       </div>
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white ">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Soul Media 2021</span>
