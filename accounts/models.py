@@ -38,7 +38,7 @@ class UserInfo(models.Model):
     # city = models.CharField(max_length=100,blank=True, null=True)
     city = models.ForeignKey(City,on_delete=models.SET_NULL,blank=True, null=True)
 
-    website = models.URLField(default='ajul.github.io')
+    website = models.URLField(default=f'soulmedia.herokuapp.com/_/{user}')
     bio = RichTextField(blank=True, null=True)
 
     def __str__(self):
