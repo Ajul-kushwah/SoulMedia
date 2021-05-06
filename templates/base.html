@@ -48,7 +48,7 @@
             padding: 0;
             overflow: hidden;
             height: 50px;
-            background-color: #f0f0f0;
+            /* background-color: #f0f0f0; */
         }
         .nav-bottom li{
             float: left;
@@ -86,8 +86,8 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> <!--d-none d-sm-none d-md-block-->
           
           <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
+          <button class="btn btn-link d-md-none rounded-circle mr-3 rotate-n-15">
+            <i class="fas fa-laugh-wink" style="font-size: 30px;"></i>
           </button>
 
           <ul class="navbar-nav d-none d-sm-none d-md-block">
@@ -263,24 +263,24 @@
         <ul>
             <li class="text-primary">
                 <a href="/">
-                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <i class="fa fa-home" aria-hidden="true" style="font-size: 20px;"></i>
                 </a>
             </li>
             <li class="text-primary">
               <a href="{% url 'all_saved_post' %}">
-                <i class="fas fa-bookmark" aria-hidden="true"></i>
+                <i class="fas fa-bookmark" aria-hidden="true" style="font-size: 20px;"></i>
               </a>
             </li>
             <li class="">
               <a href="{% url 'create_post_in_mobile' %}">
-                <i class="fa fa-plus" aria-hidden="true"></i>
+                <i class="fa fa-plus" aria-hidden="true" style="font-size: 20px;"></i>
               </a>
             </li>
-            <li class=""><a href="{% url 'liked_post' %}"><i class="fas fa-heart" aria-hidden="true"></i></a></li>
+            <li class=""><a href="{% url 'liked_post' %}" style="font-size: 20px;"><i class="fas fa-heart" aria-hidden="true"></i></a></li>
             <li class="">
-              <a href="">
-                <img class="img-profile rounded-circle border border-1 border-primary" src="{% static 'img/user-avatar.png'%}" width="30" height="30">
-                <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+              <a href="{% url 'profile' %}">
+                <img class="img-profile rounded-circle border border-1 border-primary" src="{{user |add_profile_image}}" width="30" height="30">
+                <!-- <img class="img-profile rounded-circle border border-1 border-primary" src="{% static 'img/user-avatar.png'%}" width="30" height="30"> -->
               </a>
             </li>
         </ul>
