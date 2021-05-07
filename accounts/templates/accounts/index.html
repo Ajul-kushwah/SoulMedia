@@ -141,6 +141,38 @@
             </div>
             <!-- create Post -->
 
+            <!-- suggest users -->
+            <div class="d-md-none mb-3 p-2">
+                <div class="">
+                    <b class="d-inline">Suggestions For You</b>
+                    <a href="{% url 'all_suggest_user'%}" class="d-inline float-right">view more</a>
+                </div>
+                {% for i in suggest_user %}
+                <!-- suggest user 1 -->
+                <div class="card gedff-card mt-2">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <!-- <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt=""> -->
+                                    <img class="rounded-circle" width="45" height="45" src="{{i.id |add_profile_image}}" alt="">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0"><a href="{% url 'other_user_profile' i.username%}">@{{i.username}}</a></div>
+                                    <div class="h7 text-muted">{{i.get_full_name}}</div>
+                                </div>
+                            </div>    
+                            <div>
+                                <a href="{% url 'other_user_profile' i.username%}" class="btn btn-primary">View</a>
+                            </div>
+                            <!-- <div>
+                                <a href="" class="btn btn-primary">Follow</a>
+                            </div> -->
+                        </div>    
+                    </div> 
+                </div>
+                {% endfor %}
+            </div>        
             <!-- users posts -->
             {% for post in post %}
             <!--- \\\\\\\Post-->
@@ -244,11 +276,11 @@
                         
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
                             <div class="h6 dropdown-header">Share post with</div>
-                            <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u=http://localhost:8000/post/single_post/{{post.id}}" target="_blank">to Facebook <i class="fab fa-facebook-f" style="color: #3b5998;"></i></a>
+                            <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u=https://soulmedia.herokuapp.com/post/single_post/{{post.id}}" target="_blank">to Facebook <i class="fab fa-facebook-f" style="color: #3b5998;"></i></a>
                             <!-- <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u=https://ajul-kushwah.github.io/" target="_blank">to Facebook <i class="fab fa-facebook-f" style="color: #3b5998;"></i></a> -->
-                            <a class="dropdown-item" href="https://api.whatsapp.com/send?text=http://localhost:8000/post/single_post/{{post.id}}" target="_blank" >to Whatsapp <i class="fab fa-whatsapp" style="color: #25d366;"></i></a>
+                            <a class="dropdown-item" href="https://api.whatsapp.com/send?text=https://soulmedia.herokuapp.com/post/single_post/{{post.id}}" target="_blank" >to Whatsapp <i class="fab fa-whatsapp" style="color: #25d366;"></i></a>
                             <!-- <a class="dropdown-item" href="https://api.whatsapp.com/send?text=https://ajul-kushwah.github.io/" target="_blank" >to Whatsapp <i class="fab fa-whatsapp" style="color: #25d366;"></i></a> -->
-                            <a class="dropdown-item" href="mailto:?subject=Soul Media Post&body=Check out this site: http://localhost:8000/post/single_post/{{post.id}}">Mail to <i class="fas fa-envelope-square" style="color:rgb(161, 17, 17)"></i></a>
+                            <a class="dropdown-item" href="mailto:?subject=Soul Media Post&body=Check out this site: https://soulmedia.herokuapp.com/post/single_post/{{post.id}}">Mail to <i class="fas fa-envelope-square" style="color:rgb(161, 17, 17)"></i></a>
                             <input id="clickTocopy" type="hidden" value="{{ post.id }}">
                             <a class="dropdown-item" onclick="clickTocopy({{ post.id }})">copy link <i class="fa fa-clone"></i></a>
                         </div>

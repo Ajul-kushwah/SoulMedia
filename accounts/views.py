@@ -28,7 +28,6 @@ def index(request):
     # print(f)
     suggestions_user = User.objects.exclude(username__in=f)[:2]
     # suggestions_userr = User.objects.exclude(username__in=f).order_by('?')
-    # print(suggestions_userr)
     context = {'post': post,
                'follower_count': followers_count,
                'followings_count': followings_count,
@@ -38,6 +37,13 @@ def index(request):
 
 def settings(request):
     return render(request,'settings/settings.html')
+
+def demo_login(request):
+    user = authenticate(username='demo',password='1234')
+    if user is not None:
+        login(request,user)
+        return redirect('/')
+    return redirect('login_page')
 
 
 def user_login(request):
@@ -113,7 +119,7 @@ def user_register(request):
                             usr = User.objects.get(username=username)
 
                             # for follow and userinfo
-                            userinfo = UserInfo(user=usr)
+                            userinfo = UserInfo(user=usr,website=f'soulmedia.herokuapp.com/_/{usr.username}')
                             userinfo.save()
                             following = Following(user=usr)
                             following.save()
