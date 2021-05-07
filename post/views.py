@@ -7,7 +7,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 import json
 
 def createPostView(request):
-    return render(request, 'post/create_post.html')
+    return render(request, 'post/create_post.html',{'create_post_page':True})
 
 
 
@@ -232,12 +232,13 @@ def post_like(request):
 
     return JsonResponse(data, safe=False)
 
-
+# for user's all liked post
 def liked_post(request):
     liked_post = Post.objects.filter(liked=request.user).order_by('-id')
     liked_post_count = liked_post.count()
     context = {'post':liked_post,
-               'post_count':liked_post_count
+               'post_count':liked_post_count,
+               'like_page':True
                }
     return render(request,'post/liked_post.html',context)
 
@@ -266,6 +267,7 @@ def all_saved_post(request):
     saved_post_count = saved_postt.count()
 
     context = {'saved_postt': saved_postt,
-               'saved_post_count': saved_post_count
+               'saved_post_count': saved_post_count,
+               'saved_post_page':True
               }
     return render(request, 'post/all_saved_post.html', context)

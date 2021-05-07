@@ -31,7 +31,8 @@ def index(request):
     context = {'post': post,
                'follower_count': followers_count,
                'followings_count': followings_count,
-               'suggest_user': suggestions_user
+               'suggest_user': suggestions_user,
+               'home':True
                }
     return render(request,'accounts/index.html',context)
 
@@ -227,7 +228,8 @@ def profile(request):
                'follower_count': followers_count,
                'followings_count': followings_count,
                'saved_post':saved_post,
-               'saved_post_count':saved_post_count}
+               'saved_post_count':saved_post_count,
+               'profile_page':True}
 
     return render(request,'accounts/profile.html',context)
 
