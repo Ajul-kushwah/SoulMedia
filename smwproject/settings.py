@@ -191,7 +191,7 @@ CKEDITOR_CONFIGS = {
     }
 
 JAZZMIN_SETTINGS ={
-    "site_title": "Library Admin",
+    "site_title": "SoulMedia Admin",
 
     # Title on the brand, and login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "Soul Media",
