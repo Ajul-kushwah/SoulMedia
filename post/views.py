@@ -16,6 +16,9 @@ def create_post(request):
         title = request.POST['title']
         body = request.POST['body']
         image = request.FILES.get('i')
+        if title == '' and body == '' and image is None:
+            messages.warning(request, 'please fill atleast one field.')
+            return redirect('index')
         post = Post(title=title,
                     body=body,
                     image=image,
@@ -62,10 +65,12 @@ def edit_post(request, id):
 
             post.title = title
             post.body = body
-            post.image = image
+            if image is not None:
+                post.image = image
+
             post.author = request.user
             post.save()
-            print('post created ')
+            print('post updated ')
             messages.success(request, 'post edited successfully.')
             return redirect('your_post')
         else:

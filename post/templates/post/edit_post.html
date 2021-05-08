@@ -47,6 +47,7 @@
             </div>
         </div>
         <div class="col-md-6 gedf-main">
+            
             <b class="mb-1">Edit Post: </b>
             <!--- create Post-->
             <div class="card gedf-card">
@@ -129,7 +130,7 @@
                                 
                                 {% if post.image.url is not None %}
                                     {% if post.file_extension == 'png' %}
-                                    <input type="file" name="i" id="postfileupload" class=""  accept="image/*" id="file">   
+                                    <input type="file" name="i"  id="postfileupload" class=""  accept="image/*" id="file">   
                                     {% else %}
                                     <input type="file" name="i" id="postfileupload" class=""  accept="video/*" id="file">
                                     {% endif %}    
