@@ -4,7 +4,7 @@
 {%block content%}
 {% load static %}
 {% load humanize %}
-
+{% load notifications_tags %}
 
 
 
@@ -71,31 +71,31 @@
                                 <div class="mr-2 rounded-circle" style="border: 2px solid rgb(103, 103, 245);">
                                     <img class="rounded-circle" style="border: 2px solid white;" width="45" src="{% static 'img/user-avatar.png' %}" alt="">
                                 </div>
-                                <b class="ml-2">Ajul</b>
+                                <small class="ml-2">Ajul</small>
                             </div>
                             <div>
                                 <div class="mr-2 rounded-circle" style="border: 2px solid rgb(103, 103, 245);">
                                     <img class="rounded-circle" style="border: 2px solid white;" width="45" src="{% static 'img/user-avatar.png' %}" alt="">
                                 </div>
-                                <b class="ml-2">ajju</b>
+                                <small class="ml-2">ajju</small>
                             </div>
                             <div>
                                 <div class="mr-2 rounded-circle" style="border: 2px solid rgb(103, 103, 245);">
                                     <img class="rounded-circle" style="border: 2px solid white;" width="45" src="{% static 'img/user-avatar.png' %}" alt="">
                                 </div>
-                                <b class="ml-2">luja</b>
+                                <small class="ml-2">luja</small>
                             </div>
                             <div>
                                 <div class="mr-2 rounded-circle" style="border: 2px solid rgb(103, 103, 245);">
                                     <img class="rounded-circle" style="border: 2px solid white;" width="45" src="{% static 'img/user-avatar.png' %}" alt="">
                                 </div>
-                                <b class="ml-2">diwan</b>
+                                <small class="ml-2">diwan</small>
                             </div>
                             <div>
                                 <div class="mr-2 rounded-circle" style="border: 2px solid rgb(103, 103, 245);">
                                     <img class="rounded-circle" style="border: 2px solid white;" width="45" src="{% static 'img/user-avatar.png' %}" alt="">
                                 </div>
-                                <b class="ml-2">demo</b>
+                                <small class="ml-2">demo</small>
                             </div>
                             
                         </div>    
@@ -451,6 +451,9 @@
 
                     <a class="btn btn-light w-100 mt-1" href="{% url 'liked_post'%}" styles="color: aliceblue;">
                         <i class="fas fa-heart"></i> Liked
+                    </a>
+                    <a class="btn btn-light w-100 mt-1" href="{% url 'all_notifications'%}" styles="color: aliceblue;">
+                        <i class="fas fa-bell"></i> Notifications
                     </a>
                     <a class="btn btn-light w-100 mt-1" href="{% url 'logout'%}" styles="color: aliceblue;">
                         <i class="fas fa-sign-out-alt"></i> Logout

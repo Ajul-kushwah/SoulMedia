@@ -8,7 +8,16 @@ from django.db.models import Q
 
 # Create your views here.
 from post.models import Following
+from . models import *
+def stories(request):
+    stories = Stories.objects.all()
+    context={'stories':stories}
+    return render(request,'stories/stories.html',context)
 
+def stories1(request):
+    stories = Stories.objects.all()
+    context={'stories':stories}
+    return render(request,'stories/stories1.html',context)
 
 def your_settings(request):
     user_info = UserInfo.objects.get(user=request.user)
@@ -61,6 +70,13 @@ def search_user(request):
 
 def push_notifications(request):
     return render(request,'settings/push_notifications.html')
+
+def all_notifications(request):
+    ur=request.user.notifications.unread()
+    r=request.user.notifications.read()
+    print(ur)
+    print(r)
+    return render(request,'notifications/all_notifications.html')
 
 @login_required
 def other_details(request):

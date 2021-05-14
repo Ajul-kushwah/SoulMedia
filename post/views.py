@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Post, Following, Like
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 import json
+from notifications.signals import notify
 
 def createPostView(request):
     return render(request, 'post/create_post.html',{'create_post_page':True})
@@ -85,7 +86,7 @@ def delete_post(request, id):
     messages.success(request, 'post deleted.')
     return redirect('your_post')
 
-
+#for follow the user
 def follow(request, username):
     main_user = request.user
     to_follow = User.objects.get(username=username)
@@ -99,7 +100,8 @@ def follow(request, username):
         is_following = False
     else:
         Following.follow(main_user, to_follow)
-        is_following = True
+        notify.send(sender=request.user, recipient=to_follow, verb=f'http://localhost:8000/post/followers',description=f'{request.user} started following you')
+    is_following = True
 
     resp = {
         "following": is_following,
@@ -209,6 +211,8 @@ def other_user_followers(request,username):
                }
     return render(request, 'post/other_user_followers.html', context)
 
+
+
 # for like the post
 def post_like(request):
     post_id = request.POST.get('post_id')
@@ -218,7 +222,10 @@ def post_like(request):
         post.liked.remove(request.user)
         is_liked = False
     else:
-        post.liked.add(request.user)
+        post.liked.add(request.user)#href="http://localhost:8000/post/single_post/{post.id}"
+        if str(request.user.username) != str(post.author):
+            print('sss')
+            notify.send(sender=request.user, recipient=post.author, verb=f'http://localhost:8000/post/single_post/{post.id}',description=f'{request.user} liked your post')
         is_liked = True
 
     like, created = Like.objects.get_or_create(user=request.user, post_id=post_id)

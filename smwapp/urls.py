@@ -16,9 +16,13 @@ urlpatterns = [
 
     path('states_load',views.states_load,name='states_load'),
     path('city_load',views.city_load,name='city_load'),
+    path('all_notifications',views.all_notifications,name='all_notifications'),
 
 
 
+
+    path('stories', views.stories, name='stories'),
+    path('stories1', views.stories1, name='stories1'),
 
     path('userIndex', views.userIndex, name='userIndex'),
     path('userIndex2', views.userIndex2, name='userIndex2'),

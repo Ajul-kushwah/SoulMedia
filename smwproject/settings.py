@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'smwapp',
 
     'ckeditor',
+    #for notifications
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -230,5 +232,7 @@ JAZZMIN_SETTINGS ={
 
     "show_ui_builder": True
 }
+
+DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

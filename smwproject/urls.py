@@ -21,6 +21,8 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('post/', include('post.urls')),
     path('user/', include('smwapp.urls')),
+    path('inbox/notifications/', include('notifications.urls', namespace='notifications')),
+
 ]
 
 # for media files

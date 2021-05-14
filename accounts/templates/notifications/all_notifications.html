@@ -1,0 +1,36 @@
+{% load notifications_tags %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Notifications-</h2>
+
+{% notifications_unread as unread_count %}
+{% if unread_count %}
+    You have <strong>{{ unread_count }}</strong> unread notifications.
+{% endif %}
+
+<br>
+<br>
+<span>{% live_notify_badge %}</span>
+
+<br>
+
+{% live_notify_list %}
+
+
+
+
+
+
+
+
+<script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
+{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}
+
+</body>
+</html>

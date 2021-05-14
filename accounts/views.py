@@ -14,6 +14,9 @@ from post.models import *
 
 from django.core.mail import send_mail
 from django.conf import settings
+
+#for notification
+from notifications.signals import notify
 # Create your views here.
 
 
@@ -259,20 +262,21 @@ def other_user_profile(request,username):
     another_user = user_d
 
     if WhoProfileView.objects.filter(user=another_user,another_user=request.user).exists():
-        print('j to hega')
+        # print('j to hega')
         who = WhoProfileView.objects.get(user=another_user,another_user=request.user)
-        print(who,who.user,who.another_user,who.created_at,who.count)
+        # print(who,who.user,who.another_user,who.created_at,who.count)
         who.count = who.count + 1
         who.created_at = datetime.datetime.now()
         who.save()
         # print(datetime.datetime.now())
     else:
-        print('ni he')
+        # print('ni he')
         who = WhoProfileView(user=another_user,
                              another_user=request.user
                              )
         who.save()
 
+    notify.send(sender=request.user, recipient=user_d, verb=f'http://localhost:8000/user/who_profile_view',description=f'{request.user} has viewed your profile')
 
     context = {'user_d' : user_d, 'userinfo' : userinfo,
                'post': post,
