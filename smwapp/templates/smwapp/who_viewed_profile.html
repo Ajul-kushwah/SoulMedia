@@ -49,7 +49,19 @@
                                 </div>
                                 <!-- follow btn -->
                                 <div>
-                                    <a href="{% url 'other_user_profile' u.another_user %}" id="follow" class="btn btn-primary">View</a>
+                                    <form action="{% url 'follow' u.another_user %}" method="post" class="follow-form" id="{{u.another_user.id}}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="" value="{{ u.another_user.id }}">
+                                        
+                                        <button type="submit" class="btn btn-primary follow-btn{{u.another_user.id}}">
+                                            {% if u.another_user.username.is_following %}
+                                            Following
+                                            {% else %}
+                                            Unfollow
+                                            {% endif %}
+                                        </button>
+                                    </form>
+                                    <!-- <a href="{% url 'other_user_profile' u.another_user %}" id="follow" class="btn btn-primary">View</a> -->
                                 </div>
                             </div>
                         </div> 

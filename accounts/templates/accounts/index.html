@@ -349,6 +349,10 @@
             </div>
             <!-- Post /////-->
 
+            {% endfor %}
+
+            <!--/ users posts -->
+
             <!-- share button modal -->
             <div class="modal fade bd-share-modal-sm{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myShareModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
@@ -390,10 +394,6 @@
                 </div>
             </div>
 
-            {% endfor %}
-
-            <!--/ users posts -->
-
             <hr>
 
         </div>
@@ -423,7 +423,18 @@
                             </div>
                         </div>    
                         <div>
-                            <a href="" class="btn btn-primary">Follow</a>
+                            <form action="{% url 'follow' i.username %}" method="post" class="follow-form" id="{{i.id}}">
+                                {% csrf_token %}
+                                <input type="hidden" name="" value="{{ i.id }}">
+                                
+                                <button type="submit" class="btn btn-primary follow-btn{{i.id}}">
+                                    {% if not i.username.is_following %}
+                                    Follow
+                                    {% else %}
+                                    Unfollow
+                                    {% endif %}
+                                </button>
+                            </form>
                         </div>
                     </div>    
                 </div> 

@@ -72,10 +72,10 @@ def push_notifications(request):
     return render(request,'settings/push_notifications.html')
 
 def all_notifications(request):
-    ur=request.user.notifications.unread()
-    r=request.user.notifications.read()
-    print(ur)
-    print(r)
+    # ur=request.user.notifications.unread()
+    # r=request.user.notifications.read()
+    # print(ur)
+    # print(r)
     return render(request,'notifications/all_notifications.html')
 
 @login_required
